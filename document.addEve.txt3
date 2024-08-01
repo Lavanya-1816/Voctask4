@@ -1,0 +1,29 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('booking-form');
+    const bookingDetails = document.getElementById('booking-details');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const doctor = document.getElementById('doctor').value;
+
+        // Create a confirmation message
+        confirmationMessage.innerHTML = `
+            <strong>Name:</strong> ${name} <br>
+            <strong>Email:</strong> ${email} <br>
+            <strong>Date:</strong> ${date} <br>
+            <strong>Time:</strong> ${time} <br>
+            <strong>Doctor:</strong> ${doctor.replace('_', ' ').toUpperCase()} <br>
+        `;
+
+        // Show booking details and hide the form
+        bookingDetails.classList.remove('hidden');
+        form.reset();
+    });
+});
